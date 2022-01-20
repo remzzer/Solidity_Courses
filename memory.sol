@@ -36,12 +36,12 @@ contract colorString {
         return favoriteColor;
     }
 
-    function changeColor(string memory _color) public returns(string memory){
+    function changeColor(string memory _color) public{
         return favoriteColor = _color;
     }
 
-    function countChar(string memory _str) public pure returns(uint){
-        bytes memory newStr = bytes(_str);
+    function countChar() public view returns(uint){
+        bytes memory newStr = bytes(favoriteColor);
         return newStr.length;
     }
 }
