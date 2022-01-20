@@ -11,7 +11,7 @@ contract Member {
     uint age;
 
     //init name and age when depolyment
-    constructor(string memory _name, uint _age) public {
+    constructor(string memory _name, uint _age)  {
         name = _name;
         age= _age;
     }
@@ -23,9 +23,31 @@ contract Member {
 //4. getName() return name with value n
 contract Teacher is Member //("Rem", 29)
 {
-    constructor(string memory n, uint a) Member(n, a ) public {}
+    constructor(string memory n, uint a) Member(n, a )  {}
 
     function getName() public view returns (string memory){
         return name;
+    }
+}
+
+/*
+Exercise:
+1. Create a contract called Base which stores fully accessible (inside and outside) integer data upon deployment
+2. Create a contract called Derived which derives the data from base and runs a function that always outputs the data to the number 5.
+*/
+
+contract Base {
+
+    uint num;
+    constructor (uint i){
+        num = i;
+    }
+}
+
+contract Derived is Base {
+    constructor(string memory str, uint i) Base(i){}
+
+    function getData() public view returns (uint){
+        return num;
     }
 }
