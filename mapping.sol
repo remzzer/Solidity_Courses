@@ -27,4 +27,22 @@ contract learnMapping {
 
     //1. Deploy the mapping contract and create some keys as addresses and set these keys to unique values
     //2. Remove all the addresses and check to see their updated value.
+
+    //Mapping Assignement:
+    //0. Create a unique data types as a struct called Movie and give it two string properties: name and director
+    //1. Create a map called movie which takes a uint as a key and the struct Movie as a value.
+
+
+
+
+
+
+  struct Movie{
+    string name;
+    string director;
+  }
+
+  mapping(uint => Movie) public movie;
+
+
 }
