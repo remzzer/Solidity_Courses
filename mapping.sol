@@ -25,24 +25,49 @@ contract learnMapping {
         delete myMap[_addr];
     }
 
+
     //1. Deploy the mapping contract and create some keys as addresses and set these keys to unique values
     //2. Remove all the addresses and check to see their updated value.
 
     //Mapping Assignement:
     //0. Create a unique data types as a struct called Movie and give it two string properties: name and director
     //1. Create a map called movie which takes a uint as a key and the struct Movie as a value.
+    //2. Create a function called addMovie which takes three inputs, movie id, title and director name which assigns a value of an integer to a movie added to the movie map.
+    //It should include a title and director name.
+
+    struct Movie{
+        string name;
+        string director;
+    }
+
+    Movie film;
+
+    //Set mapping
+    mapping(uint => Movie) movie;
+
+    //Set nested mapping
+    mapping(address => mapping(uint => Movie)) public myMovie;
+
+    function addNestedMovie(uint id, string memory title, string memory director) public {
+        //msg.sender is a global variable who capture the address that is calling the contract
+        myMovie[msg.sender][id] = Movie(title, director);
+    }
+
+    function addMovie(uint id, string memory title, string memory director) public {
+        //Set var film
+        movie[id] = Movie(title, director);
+    }
+
+    function getMovie(uint id) public view returns (Movie memory){
+        return movie[id];
+    }
+
+//NESTED mapping (maps within maps)
+// what if you wanted to store movies that belong to a certain person or address ***very important***
+// another example - allow one address to spend on behalf of another address (ERC20 tokens)
+// ex: mapping(key =>mapping(key2 => value2)) nestedMap
 
 
-
-
-
-
-  struct Movie{
-    string name;
-    string director;
-  }
-
-  mapping(uint => Movie) public movie;
 
 
 }
