@@ -66,8 +66,4 @@ contract learnMapping {
 // what if you wanted to store movies that belong to a certain person or address ***very important***
 // another example - allow one address to spend on behalf of another address (ERC20 tokens)
 // ex: mapping(key =>mapping(key2 => value2)) nestedMap
-
-
-
-
 }
