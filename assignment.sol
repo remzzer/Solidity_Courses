@@ -20,7 +20,7 @@ Good luck!
 learnFunctions = contract {
 
 
-   functon remote-controlOpen {bool closedDoor, bool openDoor ) public return(bool)
+   function remoteControlOpen {bool closedDoor, bool openDoor ) public return(bool)
 
 
    uint = 45;

@@ -32,7 +32,7 @@ contract enumsLearn {
 //5. create a function getChoice which returns the current choice of shirtColor
 //6. create a function getDefaultChoice which returns the default choice of shirtColor
 
-contract EnumEx {
+contract enumEx {
     enum shirtColor {RED, WHITE, BLUE}
     shirtColor constant defaultChoice = shirtColor.BLUE;
     shirtColor choice;

@@ -6,7 +6,7 @@ pragma solidity >= 0.7.0 < 0.9.0;
 //A contructor can be either public or internal.
 //An internal constructor marks the contract as abstract.
 
-contract Member {
+contract member {
     string name;
     uint age;
 
@@ -36,7 +36,7 @@ Exercise:
 2. Create a contract called Derived which derives the data from base and runs a function that always outputs the data to the number 5.
 */
 
-contract Base {
+contract base {
 
     uint num;
     constructor (uint i){

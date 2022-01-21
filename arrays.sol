@@ -5,7 +5,7 @@ pragma solidity >= 0.7.0 < 0.9.0;
 //2. pop, push, and length methods
 //3. remove elements from array
 
-contract LearnArrays{
+contract learnArrays{
     uint[] public myArray;
     uint[] public myArray2;
     uint[200] public myArray3;
@@ -35,7 +35,7 @@ contract LearnArrays{
 //4. Create a function called test which pushed 1 2 3 4 into changeArray
 //5. remove the element 2 from the array when the contract is called
 
-contract Exercise{
+contract exercise{
     uint[] public changeArray;
     uint i;
 

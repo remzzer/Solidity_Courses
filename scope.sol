@@ -8,7 +8,7 @@ pragma solidity >= 0.7.0 < 0.9.0;
 // External = Function can only be called outside of the contract or using "this" if you are inside
 // Public = You can call the function from outside the smart contract as well inside the smart contract
 
-contract Scope {
+contract scope {
     //uint external data = 10; // state variable cannot be external
     uint public data = 10;
 
