@@ -26,5 +26,22 @@ contract Updated {
         LedgerBalance ledgerbalance = new LedgerBalance();
         ledgerbalance.updateAmount(30);
     }
+}
 
+//Oher Global Variables Examples:
+
+contract SimpleStorage {
+
+    uint storedData;
+
+    function set(uint x) public {
+        // storedData = x;
+        // storedData = block.number;
+        // storedData = block.timestamp;
+        storedData = block.difficulty;
+    }
+
+    function get() public view returns (uint){
+        return storedData;
+    }
 }
