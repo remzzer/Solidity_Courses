@@ -13,6 +13,10 @@ contract MyContract {
         //In remix getValue is blue because it only reads the state
     }
 
+    function getNewValue() external pure returns(uint){
+        return 2 + 2;
+    }
+
     // setValue modifies the state value
     function SetValue(uint _value) external {
       value = _value; //eth send transaction
@@ -20,6 +24,18 @@ contract MyContract {
 
     }
 
+    function multiply() public pure returns(uint){
+        return 3 * 7;
+    }
 
-
+    function valuePlusThree() public view returns (uint){
+        return value + 3;
+    }
 }
+
+/*
+Exercise:
+1. create a function called multiply which returns 3 multiplied by 7
+2. create another function called valuePlusThree which returns the state variable value + 3
+3. successfully deploy the contracts and test for the results.
+*/
