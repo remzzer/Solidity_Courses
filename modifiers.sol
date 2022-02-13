@@ -6,7 +6,7 @@ contract Owner {
   address owner;
 
   // when we deploy this contract we want to set the address to the owner (msg.sender)
-  constructor public {
+  constructor () {
     owner = msg.sender;
   }
 
@@ -24,7 +24,7 @@ contract Register is Owner {
   mapping (address => bool) registeredAddresses;
   uint price;
 
-  constructor(uint initialPrice) public {
+  constructor(uint initialPrice) {
     price = initialPrice;
   }
 
