@@ -38,3 +38,32 @@ contract WithdrawPattern  {
         require(sent, "Fail transaction");
     }
 }
+
+//How does a contract find out if another address is a contract?
+
+contract Victim {
+    function isItAContract() public view returns(bool) {
+        //if there bytes of code greater than zero then it is a contract!
+        uint32 size;
+        address a = msg.sender;
+        //inline assembly accesses EVM (low level)
+        assembly {
+            //retrieve the size of the code
+            size := extcodesize(a)
+        }
+        return (size>0);
+    }
+}
+
+contract Attacker {
+
+    bool public trickedYou;
+
+    //inheritance from Victim contract
+    Victim victim;
+    constructor(address _victimAddress) {
+        victim = Victim(_victimAddress);
+        //return true even though msg.sender (wallet address) called isItAContract
+        trickedYou = !victim.isItAContract();
+    }
+}
