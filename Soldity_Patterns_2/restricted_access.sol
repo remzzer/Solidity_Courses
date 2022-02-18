@@ -41,5 +41,26 @@ contract RestrictedAccess {
     function disOwn() onlyBy(owner) onlyAfter(creationTime + 3 weeks) public{
        delete owner;
     }
+
+    /*
+    Exercice:
+    1. Create a modifier called costs which takes an _amount parameter
+    2. Require that msg.value is >= to the amount
+    3. if msg.value is not >= to the amount return a string => "Not enough ETH"
+    4. Write a function called forceOwnerChange which takes an address called _newOwner and is payable
+    5. Add a modification to the signature so that the function need 200 ETH to execute.
+    6. Set the owner of the contract to the new owner of the address.
+    7. BONUS -> Figure out how to make the functon actually run.
+    */
+
+    modifier costs(uint _amount) {
+        require(msg.value >= _amount, "Not enough ETH!");
+        _;
+    }
+
+    function forceOwnerChange(address _newOwner) external payable costs(200 ether){
+        owner = _newOwner;
+    }
+
 }
  
