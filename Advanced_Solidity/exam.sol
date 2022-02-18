@@ -36,11 +36,11 @@ contract C {
         info = 10;
     }
 
-    function increment() internal {
-
+    function increment(uint a) private pure returns (uint){
+      return a + 1;
     }
 
-    function dupdateData(uint _a) public {
+    function updateData(uint _a) public {
         data = _a;
     }
 
@@ -55,16 +55,10 @@ contract C {
 }
 
 contract D {
-    C public c;
-    c = new C;
+    C c = new C();
 
-/*
-    constructor(address _addressC) {
-        c = C(_addressC);
-    }
-*/
     function readInfo() public view returns (uint){
-        c.info;
+        return c.info();
     }
 
 }
@@ -73,12 +67,12 @@ contract E is C {
     uint private result;
     C private c;
 
-    constructor(address _addressC) {
-        c = C(_addressC);
+    constructor() {
+        c = new C();
     }
-    //?????
+
     function getComputedResult() public {
-        c.compute(23, 5);
+        result = compute(23, 5);
     }
 
     function getResult() public view returns (uint) {
@@ -86,7 +80,8 @@ contract E is C {
     }
 
     function getInfo() public view returns (uint){
-        return c.info;
+        //return c.info();
+        return info;
     }
 
 }
