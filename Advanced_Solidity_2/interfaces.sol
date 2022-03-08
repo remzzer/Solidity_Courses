@@ -32,13 +32,12 @@ interface ICounter {
 }
 
 contract CallInterface {
-  //_counter is the address of Counter contract
-  function incrementcounter(address _counter) external {
-      ICounter(_counter).increment();
-  }
-  function getCount(address _counter) external view returns(uint){
-      return ICounter(_counter).count();
-  }
+    function incrementcounter(address _counter) external {
+        ICounter(_counter).increment();
+    }
+    function getCount(address _counter) external view returns(uint){
+        return ICounter(_counter).count();
+    }
 }
 
 /*
@@ -53,10 +52,19 @@ You are going to us the IDE to speak to Uniswap and get the reserves of a Uniswa
 6. Use that address to get the reserve values and return it
 */
 
-interface A {
-
+interface IUniswapV2Factory {
+    //Factory address: 0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f
+    function getPair(address tokenA, address tokenB) external view returns (address pair);
 }
 
-interface B {
+interface IUniswapV2Pair {
+    function getReserves() external view returns (uint112 reserve0, uint112 reserve1, uint32 blockTimestampLast);
+}
 
+contract Uniswaping {
+    function getToken(address _address){
+        address pair = IUniswapV2Factory(_address).getPair();
+        (reserve0, reserve1, ) = IUniswapV2Pair(pair).getReserves;
+        return (reserve0, reserve1);
+    }
 }
