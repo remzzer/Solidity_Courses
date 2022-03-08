@@ -62,9 +62,13 @@ interface IUniswapV2Pair {
 }
 
 contract Uniswaping {
-    function getToken(address _address){
-        address pair = IUniswapV2Factory(_address).getPair();
-        (reserve0, reserve1, ) = IUniswapV2Pair(pair).getReserves;
+    address private factory = 0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f;
+    address private usdc = 0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48;
+    address private usdt = 0xdAC17F958D2ee523a2206206994597C13D831ec7;
+
+    function getReserveTokens() external view returns (uint, uint) {
+        address pair = IUniswapV2Factory(factory).getPair(usdc, usdt);
+        (uint reserve0, uint reserve1, ) = IUniswapV2Pair(pair).getReserves();
         return (reserve0, reserve1);
     }
 }
