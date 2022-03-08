@@ -24,20 +24,21 @@ contract Counter {
     }
 }
 
-//We want to call Counter contract!
+//Call Counter contract
 interface ICounter {
-    //All functions declared in interfaces are implicitly virtual => they can be overridden
+    //All functions declared in interfaces are implicitly virtual (they can be overridden)
     function count() external view returns(uint);
     function increment() external;
 }
 
 contract CallInterface {
-    function incrementcounter(address _counter) external {
-        ICounter(_counter).increment();
-    }
-    function getCount(address _counter) external view returns(uint){
-        return ICounter(_counter).count();
-    }
+  //_counter is the address of Counter contract
+  function incrementcounter(address _counter) external {
+      ICounter(_counter).increment();
+  }
+  function getCount(address _counter) external view returns(uint){
+      return ICounter(_counter).count();
+  }
 }
 
 /*
