@@ -16,7 +16,7 @@ contract LearnEvents {
 
   function trade(address to, uint amount) external {
       //outside consumer can see the event through web3js
-      //block.timestamp is a global varibale
+      //block.timestamp is a global variable
       emit NewTrade(block.timestamp, msg.sender, to, amount);
 
   }
