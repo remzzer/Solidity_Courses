@@ -22,9 +22,8 @@ Embedded or linked
     - must be deployed and then linked (library has public or external functions)
 */
 
-//Examples
+//Example 1
 // - safe math (prevent uint overflow)
-// - deleting element from array without gaps
 
 library SafeMath {
     function add(uint x, uint y) internal pure returns (uint){
@@ -43,18 +42,40 @@ contract TestSafeMath {
     uint public MAX_UINT = 2 ** 256 - 1;
 
     function testAdd(uint x, uint y) public pure returns (uint) {
-        return x.add(y); //First param is x
+
+        //This function use the caller type as their first parameter.
+        return x.add(y);
         //return SafeMath.add(x, 456);
     }
 }
 
+//Example 2
+// - deleting element from array without gaps
 
+library Array {
+    function remove(uint[] storage arr, uint index) public {
+        arr[index] = arr[arr.length - 1];
+        arr.pop();
+    }
+}
+
+contract TestArray {
+    using Array for uint[];
+
+    uint[] public arr;
+
+    function testArrayRemove() public {
+        for (uint i = 0; i < 3; i++){
+            arr.push(i);
+        }
+        // [0, 1, 2]
+
+        arr.remove(1); // [0, 2]
+    }
+}
 
 
 /*
-The directive using A for B can be used to attach library functions of library A to a given type B.
-These functions will use the caller type as their first parameter (identified using self).
-
 Exercice:
 1. Copy over the library Search and the contract Test below, rename library Search to Search2
 and contract Test to Test2.
