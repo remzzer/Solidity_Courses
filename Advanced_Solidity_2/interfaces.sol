@@ -6,6 +6,7 @@ INTERFACES
 
 Why using Interfaces? It allows you to interact with an other contract
 without copy/paste the whole code source.
+We need to define an interface for our contract to talk to another contract on the blockchain
 
 Interfaces are similar to abstract contracts and are created using interface keyword.
 Following are the key characteristics of an interface.
